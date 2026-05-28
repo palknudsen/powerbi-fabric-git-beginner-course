@@ -1,0 +1,53 @@
+table 'Big Cities'
+	lineageTag: a650caf0-0ed9-48e6-9233-576e04f3d41b
+
+	column City
+		dataType: string
+		lineageTag: f291ed15-8f22-4067-9646-c1529aa68743
+		summarizeBy: none
+		sourceColumn: City
+
+		annotation SummarizationSetBy = Automatic
+
+	column Country
+		dataType: string
+		lineageTag: e7704d2e-32d1-43bc-8068-bf74c5f1e5a7
+		summarizeBy: none
+		sourceColumn: Country
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Population Millions'
+		dataType: double
+		lineageTag: bf2a4cc9-b392-44ca-9461-b54dee610664
+		summarizeBy: sum
+		sourceColumn: Population Millions
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Region
+		dataType: string
+		lineageTag: f32bc9ff-f94f-4b25-a54b-94b358161df0
+		summarizeBy: none
+		sourceColumn: Region
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Big Cities' = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("bZDNbsIwEIRfJcp5FeWH32MCHGgLRQo9VBGHBdx4m2AjO1abvk4fpS/WmCgQIW4rfbOjmckydyuLWsITnlFANPYGEGtCdweZO2clJ1iKIyFEoRfcSMpR5BwJZpwEQjjxhj349yudDZpSQqLwh0oIQ28EqTQVd+ITU3RohSv2TQfpzKiqob2tMoK1VHfKGZKSsMjrcwVh4I0h/riyOccCIWkClXhkmluBf0uzMqc9di1C3/52KGH0SSLvSvj97q/aurarBNN+9zX7ct6lKuAtjSGYeNMHeZ9R4aHZboMF6cpajPoWiWFCaicmxTTEKmeisgmC4cOZltZhb0rYGlWw2soGsDBKntmFv2AuNawpb14uJtF1nt0/", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [#"City,Country,Population_Millions,Region" = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"City,Country,Population_Millions,Region", type text}}),
+				    #"Split Column by Delimiter" = Table.SplitColumn(#"Changed Type", "City,Country,Population_Millions,Region", Splitter.SplitTextByDelimiter(",", QuoteStyle.Csv), {"City,Country,Population_Millions,Region.1", "City,Country,Population_Millions,Region.2", "City,Country,Population_Millions,Region.3", "City,Country,Population_Millions,Region.4"}),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Split Column by Delimiter",{{"City,Country,Population_Millions,Region.1", type text}, {"City,Country,Population_Millions,Region.2", type text}, {"City,Country,Population_Millions,Region.3", type number}, {"City,Country,Population_Millions,Region.4", type text}}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Changed Type1",{{"City,Country,Population_Millions,Region.1", "City"}, {"City,Country,Population_Millions,Region.2", "Country"}, {"City,Country,Population_Millions,Region.3", "Population Millions"}, {"City,Country,Population_Millions,Region.4", "Region"}})
+				in
+				    #"Renamed Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

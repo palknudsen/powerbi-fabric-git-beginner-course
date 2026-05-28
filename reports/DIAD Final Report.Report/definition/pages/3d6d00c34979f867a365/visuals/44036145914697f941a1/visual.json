@@ -1,0 +1,85 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "name": "44036145914697f941a1",
+  "position": {
+    "x": 397.87321063394683,
+    "y": 124.33537832310839,
+    "z": 0,
+    "height": 391.32924335378323,
+    "width": 573.9059304703477,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Big Cities"
+                    }
+                  },
+                  "Property": "City"
+                }
+              },
+              "queryRef": "Big Cities.City",
+              "nativeQueryRef": "City"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Big Cities"
+                    }
+                  },
+                  "Property": "Country"
+                }
+              },
+              "queryRef": "Big Cities.Country",
+              "nativeQueryRef": "Country"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Big Cities"
+                        }
+                      },
+                      "Property": "Population Millions"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(Big Cities.Population Millions)",
+              "nativeQueryRef": "Sum of Population Millions"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Big Cities"
+                    }
+                  },
+                  "Property": "Region"
+                }
+              },
+              "queryRef": "Big Cities.Region",
+              "nativeQueryRef": "Region"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

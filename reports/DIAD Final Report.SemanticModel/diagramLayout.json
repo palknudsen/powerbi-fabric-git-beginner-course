@@ -1,0 +1,74 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 0,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 0,
+            "y": 0
+          },
+          "nodeIndex": "Big Cities",
+          "nodeLineageTag": "a650caf0-0ed9-48e6-9233-576e04f3d41b",
+          "size": {
+            "height": 243,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 284,
+            "y": 12
+          },
+          "nodeIndex": "ReportMetadata",
+          "nodeLineageTag": "a3fd3224-ff76-4733-ad90-04add89bc797",
+          "size": {
+            "height": 209,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 568,
+            "y": 36
+          },
+          "nodeIndex": "Table",
+          "nodeLineageTag": "24159c6c-2fe1-479d-b093-f7697784b73c",
+          "size": {
+            "height": 173,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 852,
+            "y": 36
+          },
+          "nodeIndex": "DevCommentParam",
+          "nodeLineageTag": "36176284-f6c6-4697-9d0b-a736ff495f9d",
+          "size": {
+            "height": 156,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "All tables",
+      "zoomValue": 100,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "All tables",
+  "defaultDiagram": "All tables"
+}
